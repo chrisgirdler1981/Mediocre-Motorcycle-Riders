@@ -25,27 +25,58 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     });
 });
-
-document.getElementById('toggleFrame').addEventListener('click', function() {
+document.addEventListener('DOMContentLoaded', () => {
     const photoContainer = document.getElementById('photoContainer');
+    const toggleButton = document.getElementById('toggleFrame');
 
-    // Check if the container is already sliding out
-    if (photoContainer.style.transform === 'translateX(100%)') {
-        // Slide in
-        photoContainer.style.transition = 'transform 0.5s, opacity 0.5s';
-        photoContainer.style.transform = 'translateX(0)';
-        photoContainer.style.opacity = '1';
-    } else {
-        // Slide out
-        photoContainer.style.transition = 'transform 0.5s, opacity 0.5s';
-        photoContainer.style.transform = 'translateX(100%)';
-        photoContainer.style.opacity = '0';
-    }
+    // Initially hide the photo container off-screen and collapse its space
+    photoContainer.style.transform = 'translateX(100%)';
+    photoContainer.style.opacity = '0';
+    photoContainer.style.visibility = 'hidden';
+    photoContainer.style.height = '0';
+    photoContainer.style.width = '0';
+    photoContainer.style.overflow = 'hidden'; // Ensure content is hidden
+
+    toggleButton.addEventListener('click', () => {
+        if (photoContainer.style.transform === 'translateX(0%)') {
+            // Slide out and collapse space
+            photoContainer.style.transition = 'transform 0.5s ease, opacity 0.5s ease, height 0.5s ease, width 0.5s ease';
+            photoContainer.style.transform = 'translateX(100%)';
+            photoContainer.style.opacity = '0';
+            photoContainer.style.visibility = 'hidden';
+            photoContainer.style.height = '0';
+            photoContainer.style.width = '0';
+        } else {
+            // Slide in and expand space
+            photoContainer.style.transition = 'transform 0.5s ease, opacity 0.5s ease, height 0.5s ease, width 0.5s ease';
+            photoContainer.style.transform = 'translateX(0%)';
+            photoContainer.style.opacity = '1';
+            photoContainer.style.visibility = 'visible';
+            photoContainer.style.height = 'auto'; 
+            photoContainer.style.width = 'auto'; 
+        }
+    });
 });
+
 
 document.querySelectorAll('.gallery-item').forEach(item => {
     item.addEventListener('mouseover', () => {
         // Optionally do something on hover
         console.log(item.getAttribute('data-info'));
     });
+});
+document.querySelectorAll('.gallery-item').forEach(item => {
+    item.addEventListener('click', () => {
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const caption = document.getElementById('caption');
+        
+        modal.style.display = 'block';
+        modalImg.src = item.querySelector('img').src;
+        caption.textContent = item.querySelector('.info').textContent;
+    });
+});
+
+document.querySelector('.close').addEventListener('click', () => {
+    document.getElementById('imageModal').style.display = 'none';
 });
