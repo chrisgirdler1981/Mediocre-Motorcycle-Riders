@@ -29,17 +29,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const photoContainer = document.getElementById('photoContainer');
     const toggleButton = document.getElementById('toggleFrame');
 
-    
+    // Initially hide the photo container off-screen and collapse its space
     photoContainer.style.transform = 'translateX(100%)';
     photoContainer.style.opacity = '0';
     photoContainer.style.visibility = 'hidden';
     photoContainer.style.height = '0';
     photoContainer.style.width = '0';
-    photoContainer.style.overflow = 'hidden'; 
+    photoContainer.style.overflow = 'hidden'; // Ensure content is hidden
 
     toggleButton.addEventListener('click', () => {
         if (photoContainer.style.transform === 'translateX(0%)') {
-            
+            // Slide out and collapse space
             photoContainer.style.transition = 'transform 0.5s ease, opacity 0.5s ease, height 0.5s ease, width 0.5s ease';
             photoContainer.style.transform = 'translateX(100%)';
             photoContainer.style.opacity = '0';
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
             photoContainer.style.height = '0';
             photoContainer.style.width = '0';
         } else {
-            
+            // Slide in and expand space
             photoContainer.style.transition = 'transform 0.5s ease, opacity 0.5s ease, height 0.5s ease, width 0.5s ease';
             photoContainer.style.transform = 'translateX(0%)';
             photoContainer.style.opacity = '1';
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 document.querySelectorAll('.gallery-item').forEach(item => {
     item.addEventListener('mouseover', () => {
-        
+        // Optionally do something on hover
         console.log(item.getAttribute('data-info'));
     });
 });
@@ -81,43 +81,43 @@ document.querySelector('.close').addEventListener('click', () => {
     document.getElementById('imageModal').style.display = 'none';
 });
   document.getElementById('joinButton').addEventListener('click', function(e) {
-            
+            // Add the 'clicked' class for animation
             this.classList.add('clicked');
 
-            
+            // Remove the 'clicked' class after animation ends to reset
             setTimeout(() => {
                 this.classList.remove('clicked');
-            }, 600); 
+            }, 600); // Match this duration with the animation duration
         });
-
+// Additional JavaScript for email button interaction
 document.getElementById('emailButton').addEventListener('click', function() {
-    
+    // Confirm the email action
     if (confirm('Do you want to send an email to Mediocre Motorcycle Riders?')) {
         window.location.href = 'mailto:mediocremotorcycleriders@gmail.com';
     }
 
-    /
+    // Add the 'clicked' class for animation
     this.classList.add('clicked');
 
-    
+    // Remove the 'clicked' class after animation ends to reset
     setTimeout(() => {
         this.classList.remove('clicked');
-    }, 600); 
+    }, 600); // Match this duration with the animation duration
 });
 document.addEventListener('DOMContentLoaded', () => {
     const button = document.getElementById('animateButton');
     const textContainer = document.getElementById('textContainer');
 
     button.addEventListener('click', () => {
-       
+        // Toggle the class to trigger the animation
         if (textContainer.classList.contains('hidden')) {
             textContainer.classList.remove('hidden');
             textContainer.classList.add('show-text');
-            button.textContent = 'Hide Information'; 
+            button.textContent = 'Hide Information'; // Change button text after showing
         } else {
             textContainer.classList.add('hidden');
             textContainer.classList.remove('show-text');
-            button.textContent = 'Show More Information'; 
+            button.textContent = 'Show More Information'; // Change button text after hiding
         }
     });
 });
