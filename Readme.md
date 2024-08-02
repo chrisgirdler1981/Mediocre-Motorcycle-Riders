@@ -2,7 +2,7 @@
 
 This is a simple 4-page website created using HTML, CSS and javascript for a Young Motorcycling Community who are without any kind of website other than the Facebook group they grew on.
 
-[Here is the link to the site](https://chrisgirdler1981.github.io/Shatterford-MCC-Website/)
+[Here is the link to the site](https://chrisgirdler1981.github.io/Mediocre-Motorcycle-riders/index.html)
 
 ## Table of Contents
 
