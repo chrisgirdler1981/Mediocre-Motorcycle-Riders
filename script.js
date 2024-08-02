@@ -29,17 +29,17 @@ document.addEventListener('DOMContentLoaded', () => {
     const photoContainer = document.getElementById('photoContainer');
     const toggleButton = document.getElementById('toggleFrame');
 
-    // Initially hide the photo container off-screen and collapse its space
+    
     photoContainer.style.transform = 'translateX(100%)';
     photoContainer.style.opacity = '0';
     photoContainer.style.visibility = 'hidden';
     photoContainer.style.height = '0';
     photoContainer.style.width = '0';
-    photoContainer.style.overflow = 'hidden'; // Ensure content is hidden
+    photoContainer.style.overflow = 'hidden'; 
 
     toggleButton.addEventListener('click', () => {
         if (photoContainer.style.transform === 'translateX(0%)') {
-            // Slide out and collapse space
+            
             photoContainer.style.transition = 'transform 0.5s ease, opacity 0.5s ease, height 0.5s ease, width 0.5s ease';
             photoContainer.style.transform = 'translateX(100%)';
             photoContainer.style.opacity = '0';
@@ -47,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
             photoContainer.style.height = '0';
             photoContainer.style.width = '0';
         } else {
-            // Slide in and expand space
+            
             photoContainer.style.transition = 'transform 0.5s ease, opacity 0.5s ease, height 0.5s ease, width 0.5s ease';
             photoContainer.style.transform = 'translateX(0%)';
             photoContainer.style.opacity = '1';
@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 document.querySelectorAll('.gallery-item').forEach(item => {
     item.addEventListener('mouseover', () => {
-        // Optionally do something on hover
+        
         console.log(item.getAttribute('data-info'));
     });
 });
@@ -79,4 +79,45 @@ document.querySelectorAll('.gallery-item').forEach(item => {
 
 document.querySelector('.close').addEventListener('click', () => {
     document.getElementById('imageModal').style.display = 'none';
+});
+  document.getElementById('joinButton').addEventListener('click', function(e) {
+            
+            this.classList.add('clicked');
+
+            
+            setTimeout(() => {
+                this.classList.remove('clicked');
+            }, 600); 
+        });
+
+document.getElementById('emailButton').addEventListener('click', function() {
+    
+    if (confirm('Do you want to send an email to Mediocre Motorcycle Riders?')) {
+        window.location.href = 'mailto:mediocremotorcycleriders@gmail.com';
+    }
+
+    /
+    this.classList.add('clicked');
+
+    
+    setTimeout(() => {
+        this.classList.remove('clicked');
+    }, 600); 
+});
+document.addEventListener('DOMContentLoaded', () => {
+    const button = document.getElementById('animateButton');
+    const textContainer = document.getElementById('textContainer');
+
+    button.addEventListener('click', () => {
+       
+        if (textContainer.classList.contains('hidden')) {
+            textContainer.classList.remove('hidden');
+            textContainer.classList.add('show-text');
+            button.textContent = 'Hide Information'; 
+        } else {
+            textContainer.classList.add('hidden');
+            textContainer.classList.remove('show-text');
+            button.textContent = 'Show More Information'; 
+        }
+    });
 });
